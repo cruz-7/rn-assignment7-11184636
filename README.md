@@ -82,6 +82,11 @@ This is a React Native application for a shopping platform that includes feature
 - **CheckHeader**: A header component used specifically for the checkout screen.
 - **SideMenu**: A custom drawer component for navigation.
 
+  ## screenshot
+![alt text](../assets/screenshot1.jpg)
+![alt text](../assets/screenshot2.jpg)
+![alt text](../assets/screenshot3.jpg)
+
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
