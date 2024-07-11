@@ -1,24 +1,19 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, Image, StyleSheet } from 'react-native';
 
-
-const CheckHeader = ({navigation}) => {
+const CheckHeader = ({ navigation }) => {
   return (
     <View style={styles.container}>
-
       <View style={styles.textHeader}>
-      <View style={styles.logoIcon} >
-      <Image source={require('../assets/Logo.png')} style={styles.logo} />
+        <View style={styles.logoIcon}>
+          <Image source={require('../assets/Logo.png')} style={styles.logo} />
+        </View>
+        <View style={styles.rightIcons}>
+          <TouchableOpacity style={styles.icon}>
+            <Image source={require('../assets/Search.png')} style={styles.image} />
+          </TouchableOpacity>
+        </View>
       </View>
-      <View style={styles.rightIcons}>
-        <TouchableOpacity style={styles.icon}>
-          <Image source={require('../assets/Search.png')} style={styles.image} />
-        </TouchableOpacity>
-       
-      </View>
-      </View>
-
-      
     </View>
   );
 };
@@ -33,8 +28,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingRight: 20
-  
+    paddingRight: 20,
   },
   icon: {
     marginHorizontal: 5,
@@ -47,13 +41,13 @@ const styles = StyleSheet.create({
   logo: {
     width: 120,
     height: 40,
-    resizeMode: 'contain', 
+    resizeMode: 'contain',
   },
   logoIcon: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginLeft: 130
-  }
+    flex: 1,
+  },
 });
 
 export default CheckHeader;

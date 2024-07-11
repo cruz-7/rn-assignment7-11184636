@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
 import { CartContext } from '../screens/CartContext';
-import CheckHeader from './CheckHeader';
+import CheckHeader from '../components/CheckHeader';
 
 export default function CheckoutScreen({ navigation }) {
   const { cartItems, removeFromCart } = useContext(CartContext);
 
   const renderItem = ({ item }) => (
     <View key={item.uniqueId} style={styles.cartItem}>
-      <Image source={item.image} style={styles.image} />
+      <Image source={{uri: item.image}} style={styles.image} />
       <View style={styles.itemDetails}>
         <Text style={styles.productName}>{item.title}</Text>
         <Text style={styles.description}>{item.subtitle}</Text>
@@ -21,17 +21,17 @@ export default function CheckoutScreen({ navigation }) {
   );
 
   const calculateTotal = () => {
-    return cartItems.reduce((sum, item) => sum + parseFloat(item.price.replace('$', '')), 0).toFixed(2);
+    return cartItems.reduce((sum, item) => sum + parseFloat(item.price), 0).toFixed(2);
   };
 
   return (
-    <View style={styles.container}> 
-     <CheckHeader />
-     <Text style={styles.header}>Checkout</Text>
+    <View style={styles.container}>
+      <CheckHeader />
+      <Text style={styles.header}>Checkout</Text>
       <FlatList
         data={cartItems}
         renderItem={renderItem}
-        keyExtractor={item => item.uniqueId}
+        keyExtractor={item => item.uniqueId.toString()}
       />
       <View style={styles.totalContainer}>
         <Text style={styles.totalText}>Est. Total</Text>
@@ -43,6 +43,7 @@ export default function CheckoutScreen({ navigation }) {
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -52,7 +53,6 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
-   
   },
   cartItem: {
     flexDirection: 'row',
@@ -108,6 +108,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   checkoutButtonText: {
+    color: 'white',
+    fontSize: 18,
+  },
+  backButton: {
+    backgroundColor: 'gray',
+    padding: 16,
+    borderRadius: 4,
+    marginTop: 16,
+    alignItems: 'center',
+  },
+  backButtonText: {
     color: 'white',
     fontSize: 18,
   },
